@@ -52,8 +52,27 @@ describe('Park', function() {
 
   });
 
-  it('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    const actual = park.findSpecies('Velociraptor');
+    assert.deepStrictEqual(actual, [dinosaur2, dinosaur3]);
+  });
 
-  it('should be able to remove all dinosaurs of a particular species');
+  it('should be able to remove all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.removeAllOfSpecies('Velociraptor');
+    const actual = park.findSpecies('Velociraptor');
+    assert.deepStrictEqual(actual, []);
+  });
+
+  it('Calculate the total number of visitors per day');
+
+  it('Calculate the total number of visitors per year');
+
+  it('Calculate the total revenue from ticket sales for one year');
 
 });
