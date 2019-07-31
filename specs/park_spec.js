@@ -28,10 +28,16 @@ describe('Park', function() {
     assert.deepStrictEqual(park.dinosaurCollection, []);
   });
 
+  // it('should be able to add a dinosaur to its collection', function(){
+  //   park.addDinosaur(dinosaur1);
+  //   const actual = park.dinosaurCollection.length;
+  //   assert.strictEqual(actual, 1);
+  // });
+
   it('should be able to add a dinosaur to its collection', function(){
     park.addDinosaur(dinosaur1);
-    const actual = park.dinosaurCollection.length;
-    assert.strictEqual(actual, 1);
+    const actual = park.dinosaurCollection;
+    assert.deepStrictEqual(actual, [dinosaur1]);
   });
 
   it('should be able to remove a dinosaur from its collection', function(){
@@ -65,8 +71,8 @@ describe('Park', function() {
     park.addDinosaur(dinosaur2);
     park.addDinosaur(dinosaur3);
     park.removeAllOfSpecies('Velociraptor');
-    const actual = park.findSpecies('Velociraptor');
-    assert.deepStrictEqual(actual, []);
+    const actual = park.dinosaurCollection;
+    assert.deepStrictEqual(actual, [dinosaur1]);
   });
 
   it('Calculate the total number of visitors per day', function(){
@@ -92,5 +98,15 @@ describe('Park', function() {
     const actual = park.totalRevenueForYear();
     assert.strictEqual(actual, 282875);
   });
+
+  it('should return the diets and number of dinosaurs of that diet', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    const actual = park.diets();
+    assert.deepStrictEqual(actual, {'carnivore': 1, 'herbivore': 2});
+  });
+
+
 
 });
